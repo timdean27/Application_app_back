@@ -46,6 +46,7 @@ public class MainController {
     public ResponseEntity<?> updateJobApplication(@PathVariable("identity") Integer id, @RequestBody JobApplication requestBody) {
         Optional<JobApplication> optionalJobApplication = mySQLRepository.findById(id);
         if (optionalJobApplication.isPresent()) {
+            // get current body and store 
             JobApplication current = optionalJobApplication.get();
             // Update fields based on the request body
             current.setJob(requestBody.getJob());
