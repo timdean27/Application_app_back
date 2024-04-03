@@ -30,6 +30,7 @@ public class JobApplication {
     private String followupForInformation;
     private String adviceReceived;
     private String dateFollowedUp;
+    private boolean declined;
 
     public Integer getId() {
         return id;
@@ -161,5 +162,12 @@ public class JobApplication {
 
     public void setDateFollowedUp(String dateFollowedUp) {
         this.dateFollowedUp = dateFollowedUp;
+    }
+
+    public boolean getDeclined() {
+        return declined;
+    }
+    public void setDeclined(boolean declined) {
+        this.declined = declined;
     }
 }
