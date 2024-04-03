@@ -65,7 +65,8 @@ public class MainController {
             current.setFollowupForInformation(requestBody.getFollowupForInformation());
             current.setAdviceReceived(requestBody.getAdviceReceived());
             current.setDateFollowedUp(requestBody.getDateFollowedUp());
-    
+            current.setDeclined(requestBody.getDeclined());
+
             mySQLRepository.save(current);
             return ResponseEntity.ok(current);
         } else {
@@ -92,7 +93,7 @@ public class MainController {
         String followupForInformation = body.get("followupForInformation");
         String adviceReceived = body.get("adviceReceived");
         String dateFollowedUp = body.get("dateFollowedUp");
-    
+        boolean declined = Boolean.parseBoolean(body.getOrDefault("declined", "false"));
         // Create a new JobApplication object with the extracted data
         JobApplication newJobApplication = new JobApplication();
         newJobApplication.setJob(job);
@@ -111,7 +112,7 @@ public class MainController {
         newJobApplication.setFollowupForInformation(followupForInformation);
         newJobApplication.setAdviceReceived(adviceReceived);
         newJobApplication.setDateFollowedUp(dateFollowedUp);
-    
+        newJobApplication.setDeclined(declined);
         // Save the new JobApplication object to the database
         return mySQLRepository.save(newJobApplication);
     }
